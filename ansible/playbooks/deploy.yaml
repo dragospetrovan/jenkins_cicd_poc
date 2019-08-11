@@ -1,0 +1,16 @@
+---
+
+- name: run the playbook tasks on the dev webservers
+  hosts: webservers
+  become: yes
+  tasks:
+
+  - name: print out the hostname of target
+    command: hostname
+  - name: Download war  file from jenkins
+    get_url:
+      url: http://localhost:8080/job/CI-Job/lastSuccessfulBuild/artifact/target/HelloWorldWebApp.war
+      dest: /opt/tomcat/webapps/
+      mode: 0744
+      owner: tomcat
+      group: tomcat    
