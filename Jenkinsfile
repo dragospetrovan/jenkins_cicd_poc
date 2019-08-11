@@ -2,7 +2,7 @@ node {
    def mvnHome
    stage('Preparation') { // for display purposes
       // Get some code from a GitHub repository
-checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'jenkins', url: 'git@github.com:dragospetrovan/webapp_cicd.git']]]) 
+      git 'git@github.com:dragospetrovan/jenkins_cicd_poc.git'
       mvnHome = tool 'MAVEN3'
    }
    stage('Build') {
